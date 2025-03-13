@@ -1,43 +1,46 @@
-''Titulo=Sistema de Gestion de Biblioteca
-''Creo una clase Libro con los
-''atributos titulo (str), autor (str), isbn (str) y disponible (bool,
-''inicialmente True).
+# Titulo=Sistema de Gestion de Biblioteca
+# Creo una clase Libro con los
+# atributos titulo (str), autor (str), isbn (str) y disponible (bool,
+# inicialmente True).
 class Libro:
     def __init__(self, titulo, autor, isbn):
         self.titulo = titulo
         self.autor = autor
         self.isbn = isbn
         self.disponible = True
-    ''Incluye un método agregar() que permita introducir un nuevo libro
-    ''con sus características.
+# Incluye un método agregar() que permita introducir un nuevo libro
+# con sus características.
     def agregar(self):
         print(f"Libro '{self.titulo}' agregado con éxito.")
-    ''Incluye un método prestar() que cambie el estado de disponible a
-    ''False si el libro está disponible, y muestre un mensaje si ya está
-    ''prestado.
+
+# Incluye un método prestar() que cambie el estado de disponible a
+# False si el libro está disponible, y muestre un mensaje si ya está
+# prestado.
     def prestar(self):
         if self.disponible:
             self.disponible = False
             print(f"Libro '{self.titulo}' prestado con éxito.")
         else:
             print(f"El libro '{self.titulo}' ya está prestado.")
-    ''Incluye un método devolver() que cambie el estado de disponible a
-    ''True si estaba prestado, y muestre un mensaje si ya estaba
-    ''disponible.
+
+# Incluye un método devolver() que cambie el estado de disponible a
+# True si estaba prestado, y muestre un mensaje si ya estaba
+# disponible.
     def devolver(self):
         if not self.disponible:
             self.disponible = True
             print(f"Libro '{self.titulo}' devuelto con éxito.")
         else:
             print(f"El libro '{self.titulo}' ya estaba disponible.")
-    ''Incluye un método mostrar() que devuelva una lista con todos los
-    ''libros de la biblioteca y los muestre en pantalla con todos sus datos
-    ''y diga si estás disponible o no.
+
+# Incluye un método mostrar() que devuelva una lista con todos los
+# libros de la biblioteca y los muestre en pantalla con todos sus datos
+# y diga si estás disponible o no.
     def mostrar(self):
         estado = "Sí" if self.disponible else "No"
         return f"- {self.titulo} ({self.autor}) - ISBN: {self.isbn} - Disponible: {estado}"
 
-''definicion del menu
+# Definicion del menu
 def menu():
     print("\nBienvenido al Sistema de Gestión de Biblioteca")
     print("1. Agregar libro")
@@ -50,9 +53,9 @@ def menu():
 
 def main():
     inventario = []
-    ''Implementa un bucle que permita al usuario interactuar con el
-    ''programa mediante un menú con las siguientes opciones:
-    ''• a-1) Agregar un nuevo libro ingresando título, autor e ISBN.
+# Implementa un bucle que permita al usuario interactuar con el
+# programa mediante un menú con las siguientes opciones:
+# • a-1) Agregar un nuevo libro ingresando título, autor e ISBN.
 
     while True:
         opcion = menu()
@@ -64,7 +67,7 @@ def main():
             libro = Libro(titulo, autor, isbn)
             libro.agregar()
             inventario.append(libro)
-    ''• b-2) Prestar un libro buscando por ISBN.
+# • b-2) Prestar un libro buscando por ISBN.
 
         elif opcion == "2":
             isbn = input("Ingresa el ISBN: ")
@@ -77,7 +80,7 @@ def main():
                 libro_encontrado.prestar()
             else:
                 print("Libro no encontrado.")
-    ''• c-3) Devolver un libro buscando por ISBN.
+# • c-3) Devolver un libro buscando por ISBN.
 
         elif opcion == "3":
             isbn = input("Ingresa el ISBN: ")
@@ -90,7 +93,7 @@ def main():
                 libro_encontrado.devolver()
             else:
                 print("Libro no encontrado.")
-    ''• d-4) Mostrar todos los libros y su estado (disponible o no).
+# • d-4) Mostrar todos los libros y su estado (disponible o no).
 
         elif opcion == "4":
             if not inventario:
@@ -98,19 +101,21 @@ def main():
             else:
                 for libro in inventario:
                     print(libro.mostrar())
-    ''e-5)que busque un libro en concreto por su
-    ''ISBM y lo muestre en pantalla con todos sus datos y diga si está
-    ''disponible o no
-  elif opcion == "5":
+# e-5) Buscar un libro en concreto por su
+# ISBN y mostrarlo en pantalla con todos sus datos y decir si está
+# disponible o no
+        elif opcion == "5":
             isbn = input("Ingresa el ISBN: ")
             encontrado = False
             for libro in inventario:
                 if libro.isbn == isbn:
                     encontrado = True
                     break
-            if not encontrado:
+            if encontrado:
+                print(libro.mostrar())
+            else:
                 print("Libro no encontrado.")
-    ''• f-6) Salir del programa.
+# • f-6) Salir del programa.
         elif opcion == "6":
             print("Saliendo del programa...")
             break
