@@ -60,21 +60,21 @@ def main():
     inventario = []
 ''Implementa un bucle que permita al usuario interactuar con el
 ''programa mediante un menú con las siguientes opciones:
-''• a) Agregar un nuevo libro ingresando título, autor e ISBN.
+''• a-1) Agregar un nuevo libro ingresando título, autor e ISBN.
 
     while True:
         opcion = menu()
 
-        if opcion == "a":
+        if opcion == "1":
             titulo = input("Título: ")
             autor = input("Autor: ")
             isbn = input("ISBN: ")
             libro = Libro(titulo, autor, isbn)
             libro.agregar()
             inventario.append(libro)
-''• b) Prestar un libro buscando por ISBN.
+''• b-2) Prestar un libro buscando por ISBN.
 
-        elif opcion == "b":
+        elif opcion == "2":
             isbn = input("Ingresa el ISBN: ")
             libro_encontrado = None
             for libro in inventario:
@@ -85,9 +85,9 @@ def main():
                 libro_encontrado.prestar()
             else:
                 print("Libro no encontrado.")
-''• c) Devolver un libro buscando por ISBN.
+''• c-3) Devolver un libro buscando por ISBN.
 
-        elif opcion == "c":
+        elif opcion == "3":
             isbn = input("Ingresa el ISBN: ")
             libro_encontrado = None
             for libro in inventario:
@@ -98,16 +98,27 @@ def main():
                 libro_encontrado.devolver()
             else:
                 print("Libro no encontrado.")
-''• d) Mostrar todos los libros y su estado (disponible o no).
+''• d-4) Mostrar todos los libros y su estado (disponible o no).
 
-        elif opcion == "d":
+        elif opcion == "4":
             if not inventario:
                 print("No hay libros en el inventario.")
             else:
                 for libro in inventario:
                     print(libro.mostrar())
-
-''• e) Salir del programa.
+''e-5)Incluye un método buscar() que busque un libro en concreto por su
+''ISBM y lo muestre en pantalla con todos sus datos y diga si está
+''disponible o no
+ elif opcion == "5":
+            isbn = input("Ingresa el ISBN: ")
+            encontrado = False
+            for libro in inventario:
+                if libro.buscar(isbn):
+                    encontrado = True
+                    break
+            if not encontrado:
+                print("Libro no encontrado.")
+''• f-6) Salir del programa.
         elif opcion == "6":
             print("Saliendo del programa...")
             break
