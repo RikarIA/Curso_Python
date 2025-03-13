@@ -45,7 +45,9 @@ class Libro:
 def buscar(isbn, inventario):
         for libro in inventario:
             if libro.isbn == isbn:
+                print(f"Libro encontrado: {libro.mostrar()}")
                 return libro
+        print("Libro no encontrado.")
         return None
 
 # Definicion del menu
