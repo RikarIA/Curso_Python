@@ -112,15 +112,11 @@ def main():
 # e-5) Buscar un libro en concreto por su
 # ISBN y mostrarlo en pantalla con todos sus datos y decir si está
 # disponible o no
-        elif opcion == "5":
+       elif opcion == "5":
             isbn = input("Ingresa el ISBN: ")
-            encontrado = False
-            for libro in inventario:
-                if libro.isbn == isbn:
-                    encontrado = True
-                    break
-            if encontrado:
-                print(libro.mostrar())
+            libro_encontrado = Libro.buscar(isbn, inventario)
+            if libro_encontrado:
+                print(libro_encontrado.mostrar())
             else:
                 print("Libro no encontrado.")
 # • f-6) Salir del programa.
