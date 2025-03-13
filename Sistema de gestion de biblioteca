@@ -106,7 +106,7 @@ def main():
             else:
                 for libro in inventario:
                     print(libro.mostrar())
-''e-5)Incluye un método buscar() que busque un libro en concreto por su
+''e-5)que busque un libro en concreto por su
 ''ISBM y lo muestre en pantalla con todos sus datos y diga si está
 ''disponible o no
  elif opcion == "5":
