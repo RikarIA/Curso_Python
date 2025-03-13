@@ -40,6 +40,14 @@ class Libro:
         estado = "Sí" if self.disponible else "No"
         return f"- {self.titulo} ({self.autor}) - ISBN: {self.isbn} - Disponible: {estado}"
 
+# Incluye un método buscar() que busque un libro en concreto por su ISBM
+# y lo muestre en pantalla con todos sus datos y diga si está disponible o no
+def buscar(isbn, inventario):
+        for libro in inventario:
+            if libro.isbn == isbn:
+                return libro
+        return None
+
 # Definicion del menu
 def menu():
     print("\nBienvenido al Sistema de Gestión de Biblioteca")
